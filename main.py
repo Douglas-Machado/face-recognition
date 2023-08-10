@@ -1,9 +1,14 @@
 import cv2
-
 from deepface import DeepFace
+import os
 
-image = cv2.imread("sorrindo.jpg")
+files = os.listdir()
+extensions = ["jpg", "jpeg", "png"]
 
-result = DeepFace.analyze(image, actions=("age", "emotion", "gender", "race"))
+for file in files:
+    if any([extension in file for extension in extensions]):
+        image = cv2.imread("sorrindo.jpg")
 
-print(result)
+        result = DeepFace.analyze(image, actions=("age", "emotion", "gender", "race"))
+
+        print(result)
